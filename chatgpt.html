@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>מגוונים</title>
+
+  <style>
+    :root{
+      --bg:#6b6b6b;
+      --top:#4b4b4b;
+      --card:#0b0c10;
+      --text:#ffffff;
+      --muted:#a9b0bd;
+      --chipBorder:#3a3f55;
+      --chipActive:#2e5cff;
+      --btn1:#7a6cff;
+      --btn2:#2fc3ff;
+    }
+
+    *{box-sizing:border-box}
+    body{
+    margin:0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Hebrew", sans-serif;
+    background-image: url("./assets/bg.png");
+    background-size: cover;        /* ממלא את כל המסך */
+    background-position: center;   /* ממורכז */
+    background-repeat: no-repeat;  /* בלי חזרות */
+    background-attachment: fixed;  /* נשאר במקום בגלילה */
+    color: var(--text);
+    min-height: 100vh;
+    display:flex;
+    flex-direction:column;
+    }
+
+
+
+    header{
+    height:90px;
+    display:flex;
+    align-items:center;
+    padding: 0 22px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    /* background pattern */
+    background-image: url("./assets/top_bg.png");
+    background-repeat: repeat;
+    background-size: 220px auto;   /* הקטנה של הפטרן */
+    background-position: center;
+
+    /* nice frame */
+    border-bottom: 1px solid rgba(255,255,255,.18);
+    box-shadow: 0 10px 25px rgba(0,0,0,.25);
+
+    /* IMPORTANT for overlay */
+    overflow: hidden;
+    }
+
+    /* dark overlay so text is readable */
+    header::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: rgba(0,0,0,.35);   /* כמה כהה */
+    backdrop-filter: blur(1px);    /* בלר עדין */
+    z-index:0;
+    }
+
+    /* keep header content above overlay */
+    header > *{
+    position: relative;
+    z-index: 1;
+    }
+
+
+    header .logo{
+      width:120px;
+      height:50px;
+      background:#fff;
+      border-radius:2px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+    header .logo img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+    }
+    header h1{
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      margin:0;
+      font-size: 34px;
+      letter-spacing:.5px;
+      font-weight: 700;
+    }
+
+    main{
+      flex:1;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding: 55px 18px 70px;
+    }
+
+    .panel-wrap{
+      width:min(720px, 92vw);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:18px;
+    }
+
+    .big-title{
+      font-size: 44px;
+      font-weight: 800;
+      margin:0;
+      text-align:center;
+      color: #000000;
+      text-shadow: 0 2px 0 rgba(0,0,0,.25);
+    }
+
+    .card{
+      width:min(540px, 92vw);
+      border-radius: 56px;
+      padding: 26px 26px 30px;
+      background:
+        radial-gradient(120% 120% at 70% 0%, rgba(122,108,255,.25) 0%, transparent 55%),
+        radial-gradient(120% 120% at 20% 30%, rgba(47,195,255,.18) 0%, transparent 55%),
+        linear-gradient(180deg, #0b0c10 0%, #0a0b10 35%, #06070b 100%);
+      box-shadow: 0 18px 40px rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+
+    .section{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    label{
+      display:block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+      direction:ltr;
+      text-align:left;
+    }
+
+    select{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.10);
+      outline:none;
+      background: rgba(8,10,14,.55);
+      color: #e9ecf2;
+      font-size: 14px;
+      margin-top:10px;
+    }
+    .section label + select{ margin-top:0; }
+
+    .subLabel{
+      margin-top: 14px;
+      margin-bottom: 10px;
+      direction:ltr;
+      text-align:left;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:flex-start;
+      direction:ltr;
+    }
+
+    .chip{
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--chipBorder);
+      background: rgba(36,39,53,.55);
+      color:#e9ecf2;
+      font-size: 12px;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      user-select:none;
+      transition: .15s ease;
+    }
+    .chip::before{
+      content:"";
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      border:2px solid rgba(255,255,255,.35);
+      display:inline-block;
+    }
+    .chip.active{
+      border-color: rgba(46,92,255,.8);
+      background: rgba(46,92,255,.18);
+    }
+    .chip.active::before{
+      border-color: var(--chipActive);
+      box-shadow: 0 0 0 3px rgba(46,92,255,.15);
+    }
+
+    .row{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-top: 12px;
+      direction:ltr;
+    }
+
+    .surprise{
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(36,39,53,.35);
+      color:#e9ecf2;
+      font-size: 12px;
+      cursor:pointer;
+    }
+
+    /* Agreement checkbox bar (no star) */
+    .agree-bar{
+      margin-top:16px;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(27,31,43,.55);
+    }
+
+    .agree-check{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      cursor:pointer;
+      user-select:none;
+      color:#e9ecf2;
+      font-size:14px;
+      direction:ltr; /* keeps English sentence natural */
+      text-align:left;
+    }
+
+    .agree-check input{
+      display:none;
+    }
+
+    .checkbox{
+      width:18px;
+      height:18px;
+      border-radius:4px;
+      border:2px solid rgba(255,255,255,.4);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+      transition:.15s ease;
+    }
+
+    .checkbox::after{
+      content:"✓";
+      font-size:13px;
+      color:white;
+      opacity:0;
+      transform:scale(0.6);
+      transition:.15s ease;
+    }
+
+    .agree-check input:checked + .checkbox{
+      background: var(--chipActive);
+      border-color: var(--chipActive);
+    }
+
+    .agree-check input:checked + .checkbox::after{
+      opacity:1;
+      transform:scale(1);
+    }
+
+    .bottom{
+      margin-top: 24px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .btnWrap{
+      padding: 18px 22px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+    }
+
+    .btn{
+      border:0;
+      cursor:pointer;
+      font-weight: 700;
+      font-size: 18px;
+      padding: 14px 34px;
+      border-radius: 999px;
+      color: white;
+      background: linear-gradient(90deg, var(--btn1), var(--btn2));
+      box-shadow: 0 12px 25px rgba(0,0,0,.35);
+      transition: transform .12s ease, filter .12s ease, opacity .12s ease;
+    }
+    .btn:active{ transform: translateY(1px) scale(.99); }
+    .btn:hover{ filter: brightness(1.05); }
+
+    .btn:disabled{
+      cursor:not-allowed;
+      opacity:.55;
+      filter:none;
+    }
+
+    @media (max-width:480px){
+      header h1{ font-size: 26px; }
+      .big-title{ font-size: 34px; }
+      .card{ border-radius: 40px; padding: 18px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <!-- Put your logo.png in the same folder as this HTML -->
+      <img src="logo.png" alt="logo">
+    </div>
+    <h1>מגוונים</h1>
+  </header>
+
+  <main>
+    <div class="panel-wrap">
+      <h2 class="big-title">נא לענות על הסקר לצורך..</h2>
+
+      <div class="card">
+        <div class="section">
+          <label>שפה</label>
+
+          <select>
+            <option selected>עברית</option>
+            <option>English</option>
+            <option>العربية</option>
+          </select>
+          <label>שכבה</label>
+
+          <select>
+            <option selected>שכבה ז</option>
+            <option>שכבה ח</option>
+            <option>שכבה ט</option>
+            <option>שכבה י</option>
+            <option>שכבה יא</option>
+            <option>שכבה יב</option>
+          </select>
+
+
+          <div class="subLabel">תחביבים</div> 
+
+          <div class="chips" id="chips">
+            <div class="chip active" data-value="Music">מוזיקה</div>
+            <div class="chip active" data-value="Gaming">משחקים</div>
+            <div class="chip active" data-value="Coding">תכנות</div>
+            <div class="chip" data-value="Books">ספרים</div>
+            <div class="chip" data-value="Robotics">רובוטיקה</div>
+            <div class="chip" data-value="Volleyball">כדורעף</div>
+            <div class="chip" data-value="Football">כדורגל</div>
+            <div class="chip" data-value="Swimming">שחייה</div>
+            <div class="chip" data-value="Surfing">גלישה</div>
+            <div class="chip" data-value="IceSkating">החלקה על הקרח</div>
+            <div class="chip" data-value="Basketball">כדורסל</div>
+            <div class="chip" data-value="Running">ריצה</div>
+            <div class="chip" data-value="Art">אומנות</div>
+            <div class="chip" data-value="Cooking">בישול</div>
+            <div class="chip" data-value="Baking">אפייה</div>
+            <div class="chip" data-value="Writing">כתיבה</div>
+            <div class="chip" data-value="Travel">לטייל</div>
+        </div>
+
+
+          <div class="row">
+            <button class="surprise" id="surpriseBtn" type="button">Surprise me</button>
+          </div>
+        </div>
+
+        <!-- Agreement checkbox (NO STAR) -->
+        <div class="agree-bar">
+          <label class="agree-check">
+            <input type="checkbox" id="agree">
+            <span class="checkbox"></span>
+            <span class="agree-text">
+              Do you agree not to share any personal information and not harass anyone?
+            </span>
+          </label>
+        </div>
+
+        <div class="bottom">
+          <div class="btnWrap">
+            <button class="btn" id="findBtn" type="button">Find match</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Toggle chips
+    document.getElementById("chips").addEventListener("click", (e) => {
+      const chip = e.target.closest(".chip");
+      if (!chip) return;
+      chip.classList.toggle("active");
+    });
+
+    // Surprise me (random chips)
+    document.getElementById("surpriseBtn").addEventListener("click", () => {
+      document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+      const chips = Array.from(document.querySelectorAll(".chip"));
+      const picks = Math.floor(Math.random() * 3) + 2; // 2-4
+      for (let i = 0; i < picks; i++) {
+        chips[Math.floor(Math.random() * chips.length)].classList.add("active");
+      }
+    });
+
+    // Disable Find match until agreed
+    const agree = document.getElementById("agree");
+    const btn = document.getElementById("findBtn");
+    btn.disabled = true;
+
+    agree.addEventListener("change", () => {
+      btn.disabled = !agree.checked;
+    });
+
+    // Find match click
+    btn.addEventListener("click", () => {
+      const selected = Array.from(document.querySelectorAll(".chip.active")).map(c => c.dataset.value);
+      alert("Selected interests: " + (selected.length ? selected.join(", ") : "None"));
+    });
+  </script>
+</body>
+</html>
