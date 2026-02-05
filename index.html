@@ -20,81 +20,70 @@
       --btn2:#ff9fcf;
     }
 
-
     *{box-sizing:border-box}
     body{
-    margin:0;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Hebrew", sans-serif;
-    background-image: url("./assets/bg.png");
-    background-size: cover;        /* ממלא את כל המסך */
-    background-position: center;   /* ממורכז */
-    background-repeat: no-repeat;  /* בלי חזרות */
-    background-attachment: fixed;  /* נשאר במקום בגלילה */
-    color: var(--text);
-    min-height: 100vh;
-    display:flex;
-    flex-direction:column;
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Hebrew", sans-serif;
+      background-image: url("./assets/bg.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: var(--text);
+      min-height: 100vh;
+      display:flex;
+      flex-direction:column;
     }
-
-
 
     header{
-    height:90px;
-    display:flex;
-    align-items:center;
-    padding: 0 22px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+      height:90px;
+      display:flex;
+      align-items:center;
+      padding: 0 22px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
 
-    /* background pattern */
-    background-image: url("./assets/top_bg.png");
-    background-repeat: repeat;
-    background-size: 220px auto;   /* הקטנה של הפטרן */
-    background-position: center;
+      background-image: url("./assets/top_bg.png");
+      background-repeat: repeat;
+      background-size: 220px auto;
+      background-position: center;
 
-    /* nice frame */
-    border-bottom: 1px solid rgba(255,255,255,.18);
-    box-shadow: 0 10px 25px rgba(0,0,0,.25);
-
-    /* IMPORTANT for overlay */
-    overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+      overflow: hidden;
     }
 
-    /* dark overlay so text is readable */
     header::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background: rgba(0,0,0,.35);   /* כמה כהה */
-    backdrop-filter: blur(1px);    /* בלר עדין */
-    z-index:0;
+      content:"";
+      position:absolute;
+      inset:0;
+      background: rgba(0,0,0,.35);
+      backdrop-filter: blur(1px);
+      z-index:0;
     }
 
-    /* keep header content above overlay */
     header > *{
-    position: relative;
-    z-index: 1;
+      position: relative;
+      z-index: 1;
     }
 
     header .logo{
-    width:90px;      /* הגודל */
-    height:90px;
-    border-radius:50%; /* עיגול */
-    overflow:hidden;
-    background:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+      width:90px;
+      height:90px;
+      border-radius:50%;
+      overflow:hidden;
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
-
     header .logo img{
-    width:100%;
-    height:100%;
-    object-fit:contain; /* לא נחתך */
+      width:100%;
+      height:100%;
+      object-fit:contain;
     }
 
-    
     header h1{
       position:absolute;
       left:50%;
@@ -141,7 +130,6 @@
       box-shadow: 0 18px 40px rgba(0,0,0,.35);
       border: 1px solid rgba(255,255,255,.08);
     }
-
 
     .section{
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
@@ -238,7 +226,6 @@
       cursor:pointer;
     }
 
-    /* Agreement checkbox bar (no star) */
     .agree-bar{
       margin-top:16px;
       padding:12px 14px;
@@ -255,13 +242,11 @@
       user-select:none;
       color:#e9ecf2;
       font-size:14px;
-      direction:ltr; /* keeps English sentence natural */
+      direction:ltr;
       text-align:left;
     }
 
-    .agree-check input{
-      display:none;
-    }
+    .agree-check input{ display:none; }
 
     .checkbox{
       width:18px;
@@ -334,50 +319,53 @@
       .big-title{ font-size: 34px; }
       .card{ border-radius: 40px; padding: 18px; }
     }
+
     .ratings{
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
     }
 
     .rating-question p{
-    margin: 0 0 6px;
-    font-size: 14px;
-    color: #e9ecf2;
+      margin: 0 0 6px;
+      font-size: 14px;
+      color: #e9ecf2;
     }
 
     .stars{
-    display: flex;
-    gap: 6px;
-    font-size: 26px;
-    cursor: pointer;
-    direction: ltr;
+      display: flex;
+      gap: 6px;
+      font-size: 26px;
+      cursor: pointer;
+      direction: ltr;
     }
 
     .stars span{
-    color: #555;
-    transition: .15s ease;
+      color: #555;
+      transition: .15s ease;
     }
 
     .stars span.active{
-    color: #ff5fa2;
+      color: #ff5fa2;
     }
+
     input[type="text"]{
-    width:100%;
-    padding: 12px 12px;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,.10);
-    outline:none;
-    background: rgba(8,10,14,.55);
-    color: #e9ecf2;
-    font-size: 14px;
-    margin-top:10px;
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.10);
+      outline:none;
+      background: rgba(8,10,14,.55);
+      color: #e9ecf2;
+      font-size: 14px;
+      margin-top:10px;
     }
 
     input[type="text"]::placeholder{
       color: rgba(233,236,242,.55);
     }
+
     .gender{
       display:flex;
       gap:10px;
@@ -401,112 +389,114 @@
       border-color: transparent;
       color:white;
     }
-
   </style>
 </head>
+
 <body>
   <header>
     <div class="logo">
-      <!-- Put your logo.png in the same folder as this HTML -->
       <img src="./assets/logo.png" alt="logo">
     </div>
-    <h1>Perfect Match</h1>
+    <h1 data-i18n="appTitle">Perfect Match</h1>
   </header>
 
   <main>
     <div class="panel-wrap">
-      <h2 class="big-title">נא לענות על הסקר לצורך..</h2>
+      <h2 class="big-title" data-i18n="bigTitle">נא לענות על הסקר לצורך..</h2>
 
       <div class="card">
         <div class="section">
-          <label>שם</label>
-          <input type="text" id="name" placeholder="הכנס/י את השם שלך" />
+          <label data-i18n="nameLabel">שם</label>
+          <input
+            type="text"
+            id="name"
+            data-i18n-placeholder="namePlaceholder"
+            placeholder="הכנס/י את השם שלך"
+          />
 
-          <label>שפה</label>
-
-          <select>
-            <option selected>בחר שפה</option>
-            <option>עברית</option>
-            <option>English</option>
-            <option>العربية</option>
+          <label data-i18n="languageLabel">שפה</label>
+          <select id="langSelect">
+            <option value="" selected data-i18n="chooseLanguage">בחר שפה</option>
+            <option value="he">עברית</option>
+            <option value="en">English</option>
+            <option value="ar">العربية</option>
           </select>
-          <label>שכבה</label>
 
-          <select>
-            <option selected>בחר שכבה</option>
-            <option>שכבה ז</option>
-            <option>שכבה ח</option>
-            <option>שכבה ט</option>
-            <option>שכבה י</option>
-            <option>שכבה יא</option>
-            <option>שכבה יב</option>
+          <label data-i18n="gradeLabel">שכבה</label>
+          <select id="gradeSelect">
+            <option value="" selected data-i18n="chooseGrade">בחר שכבה</option>
+            <option value="z" data-i18n="gradeZ">שכבה ז</option>
+            <option value="h" data-i18n="gradeH">שכבה ח</option>
+            <option value="t" data-i18n="gradeT">שכבה ט</option>
+            <option value="y" data-i18n="gradeY">שכבה י</option>
+            <option value="ya" data-i18n="gradeYA">שכבה יא</option>
+            <option value="yb" data-i18n="gradeYB">שכבה יב</option>
           </select>
-          <label>מין</label>
+
+          <label data-i18n="genderLabel">מין</label>
           <div class="gender">
-            <button type="button" class="gender-btn" data-gender="male">זכר</button>
-            <button type="button" class="gender-btn" data-gender="female">נקבה</button>
-            <button type="button" class="gender-btn" data-gender="other">אחר</button>
+            <button type="button" class="gender-btn" data-gender="male" data-i18n="male">זכר</button>
+            <button type="button" class="gender-btn" data-gender="female" data-i18n="female">נקבה</button>
+            <button type="button" class="gender-btn" data-gender="other" data-i18n="other">אחר</button>
           </div>
-          <div class="subLabel">תחביבים</div> 
+
+          <div class="subLabel" data-i18n="interestsLabel">תחביבים</div>
 
           <div class="chips" id="chips">
-            <div class="chip" data-value="Music">מוזיקה</div>
-            <div class="chip" data-value="Gaming">משחקים</div>
-            <div class="chip" data-value="Coding">תכנות</div>
-            <div class="chip" data-value="Books">ספרים</div>
-            <div class="chip" data-value="Robotics">רובוטיקה</div>
-            <div class="chip" data-value="Volleyball">כדורעף</div>
-            <div class="chip" data-value="Football">כדורגל</div>
-            <div class="chip" data-value="Swimming">שחייה</div>
-            <div class="chip" data-value="Surfing">גלישה</div>
-            <div class="chip" data-value="IceSkating">החלקה על הקרח</div>
-            <div class="chip" data-value="Basketball">כדורסל</div>
-            <div class="chip" data-value="Running">ריצה</div>
-            <div class="chip" data-value="Art">אומנות</div>
-            <div class="chip" data-value="Cooking">בישול</div>
-            <div class="chip" data-value="Baking">אפייה</div>
-            <div class="chip" data-value="Writing">כתיבה</div>
-            <div class="chip" data-value="Travel">לטייל</div>
-        </div>
-
+            <div class="chip" data-value="Music" data-i18n="chipMusic">מוזיקה</div>
+            <div class="chip" data-value="Gaming" data-i18n="chipGaming">משחקים</div>
+            <div class="chip" data-value="Coding" data-i18n="chipCoding">תכנות</div>
+            <div class="chip" data-value="Books" data-i18n="chipBooks">ספרים</div>
+            <div class="chip" data-value="Robotics" data-i18n="chipRobotics">רובוטיקה</div>
+            <div class="chip" data-value="Volleyball" data-i18n="chipVolleyball">כדורעף</div>
+            <div class="chip" data-value="Football" data-i18n="chipFootball">כדורגל</div>
+            <div class="chip" data-value="Swimming" data-i18n="chipSwimming">שחייה</div>
+            <div class="chip" data-value="Surfing" data-i18n="chipSurfing">גלישה</div>
+            <div class="chip" data-value="IceSkating" data-i18n="chipIceSkating">החלקה על הקרח</div>
+            <div class="chip" data-value="Basketball" data-i18n="chipBasketball">כדורסל</div>
+            <div class="chip" data-value="Running" data-i18n="chipRunning">ריצה</div>
+            <div class="chip" data-value="Art" data-i18n="chipArt">אומנות</div>
+            <div class="chip" data-value="Cooking" data-i18n="chipCooking">בישול</div>
+            <div class="chip" data-value="Baking" data-i18n="chipBaking">אפייה</div>
+            <div class="chip" data-value="Writing" data-i18n="chipWriting">כתיבה</div>
+            <div class="chip" data-value="Travel" data-i18n="chipTravel">לטייל</div>
+          </div>
 
           <div class="row">
-            <button class="surprise" id="surpriseBtn" type="button">Surprise me</button>
+            <button class="surprise" id="surpriseBtn" type="button" data-i18n="surpriseBtn">Surprise me</button>
           </div>
         </div>
+
         <div class="ratings">
-        <label style="font-size: 20px;"> עד כמה את\ה מסכים עם המשפטים הבאים: (1-5)</label>
+          <label style="font-size: 20px;" data-i18n="ratingsTitle">עד כמה את\ה מסכים עם המשפטים הבאים: (1-5)</label>
 
-        <div class="rating-question">
-            <p>אני מעדיפ/ה קיץ יותר החורף</p>
+          <div class="rating-question">
+            <p data-i18n="q1Text">אני מעדיפ/ה קיץ יותר החורף</p>
             <div class="stars" data-question="q1">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
             </div>
-        </div>
+          </div>
 
-        <div class="rating-question">
-            <p>אני אדם של לילה ולא אדם של בוקר</p>
+          <div class="rating-question">
+            <p data-i18n="q2Text">אני אדם של לילה ולא אדם של בוקר</p>
             <div class="stars" data-question="q2">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
             </div>
-        </div>
+          </div>
 
-        <div class="rating-question">
-            <p>אני יותר אדם של חתולים מאשר של כלבים</p>
+          <div class="rating-question">
+            <p data-i18n="q3Text">אני יותר אדם של חתולים מאשר של כלבים</p>
             <div class="stars" data-question="q3">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
             </div>
+          </div>
         </div>
 
-        </div>
-
-
-        <!-- Agreement checkbox (NO STAR) -->
         <div class="agree-bar">
           <label class="agree-check">
             <input type="checkbox" id="agree">
             <span class="checkbox"></span>
-            <span class="agree-text">
+            <span class="agree-text" data-i18n="agreeText">
               Do you agree not to share any personal information and not harass anyone?
             </span>
           </label>
@@ -514,7 +504,7 @@
 
         <div class="bottom">
           <div class="btnWrap">
-            <button class="btn" id="findBtn" type="button">Find match</button>
+            <button class="btn" id="findBtn" type="button" data-i18n="findBtnText">Find match</button>
           </div>
         </div>
 
@@ -523,109 +513,288 @@
   </main>
 
   <script>
-  // ----------------- Hash maker (SHA-256 from name) -----------------
-  async function hashNameToId(name) {
-    const clean = name.trim().toLowerCase();
-    const bytes = new TextEncoder().encode(clean);
-    const hashBuffer = await crypto.subtle.digest("SHA-256", bytes);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    const hex = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
-    return "nameHash-" + hex.slice(0, 16); // short id
-  }
-
-  // ----------------- Chips -----------------
-  const chipsEl = document.getElementById("chips");
-  chipsEl.addEventListener("click", (e) => {
-    const chip = e.target.closest(".chip");
-    if (!chip) return;
-    chip.classList.toggle("active");
-  });
-
-  document.getElementById("surpriseBtn").addEventListener("click", () => {
-    document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
-    const chips = Array.from(document.querySelectorAll(".chip"));
-    const picks = Math.floor(Math.random() * 3) + 2; // 2-4
-    for (let i = 0; i < picks; i++) {
-      chips[Math.floor(Math.random() * chips.length)].classList.add("active");
-    }
-  });
-
-  // ----------------- Gender (buttons) -----------------
-  let selectedGender = null;
-  document.querySelectorAll(".gender-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".gender-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      selectedGender = btn.dataset.gender; // "male" | "female" | "other"
-    });
-  });
-
-  // ----------------- Agreement -----------------
-  const agree = document.getElementById("agree");
-  const findBtn = document.getElementById("findBtn");
-
-  findBtn.disabled = !agree.checked;
-  agree.addEventListener("change", () => {
-    findBtn.disabled = !agree.checked;
-  });
-
-  // ----------------- Star Ratings -----------------
-  const ratings = {}; // { q1: 3, q2: 5, q3: 1 }
-
-  document.querySelectorAll(".stars").forEach(starGroup => {
-    const stars = Array.from(starGroup.querySelectorAll("span"));
-    const key = starGroup.dataset.question;
-
-    stars.forEach((star, index) => {
-      star.addEventListener("click", () => {
-        ratings[key] = index + 1;
-        stars.forEach((s, i) => s.classList.toggle("active", i <= index));
-      });
-    });
-  });
-
-  // ----------------- Find match (ONE handler) -----------------
-  findBtn.addEventListener("click", async () => {
-    const name = document.getElementById("name").value.trim();
-    if (!name) return alert("אנא הכנס/י שם");
-
-    if (!selectedGender) return alert("אנא בחר/י מין");
-
-    const selectedInterests = Array
-      .from(document.querySelectorAll(".chip.active"))
-      .map(c => c.dataset.value);
-
-    const required = ["q1", "q2", "q3"];
-    const missing = required.filter(k => !ratings[k]);
-    if (missing.length) return alert("אנא דרג/י את כל 3 המשפטים עם כוכבים ⭐");
-
-    const id = await hashNameToId(name);
-
-    const result = {
-      id,
-      name,
-      gender: selectedGender,
-      interests: selectedInterests,
-      ratings
+    // ---------- i18n ----------
+    const I18N = {
+      he: {
+        dir: "rtl",
+        appTitle: "Perfect Match",
+        bigTitle: "נא לענות על הסקר לצורך..",
+        nameLabel: "שם",
+        namePlaceholder: "הכנס/י את השם שלך",
+        languageLabel: "שפה",
+        chooseLanguage: "בחר שפה",
+        gradeLabel: "שכבה",
+        chooseGrade: "בחר שכבה",
+        gradeZ: "שכבה ז",
+        gradeH: "שכבה ח",
+        gradeT: "שכבה ט",
+        gradeY: "שכבה י",
+        gradeYA: "שכבה יא",
+        gradeYB: "שכבה יב",
+        genderLabel: "מין",
+        male: "זכר",
+        female: "נקבה",
+        other: "אחר",
+        interestsLabel: "תחביבים",
+        surpriseBtn: "הפתע אותי",
+        ratingsTitle: "עד כמה את\\ה מסכים עם המשפטים הבאים: (1-5)",
+        q1Text: "אני מעדיפ/ה קיץ יותר מהחורף",
+        q2Text: "אני אדם של לילה ולא אדם של בוקר",
+        q3Text: "אני יותר אדם של חתולים מאשר של כלבים",
+        agreeText: "האם את/ה מסכים/ה לא לשתף מידע אישי ולא להטריד אף אחד?",
+        findBtnText: "מצא התאמה",
+        chipMusic: "מוזיקה",
+        chipGaming: "משחקים",
+        chipCoding: "תכנות",
+        chipBooks: "ספרים",
+        chipRobotics: "רובוטיקה",
+        chipVolleyball: "כדורעף",
+        chipFootball: "כדורגל",
+        chipSwimming: "שחייה",
+        chipSurfing: "גלישה",
+        chipIceSkating: "החלקה על הקרח",
+        chipBasketball: "כדורסל",
+        chipRunning: "ריצה",
+        chipArt: "אומנות",
+        chipCooking: "בישול",
+        chipBaking: "אפייה",
+        chipWriting: "כתיבה",
+        chipTravel: "לטייל",
+        alerts: {
+          enterName: "אנא הכנס/י שם",
+          pickGender: "אנא בחר/י מין",
+          rateAll: "אנא דרג/י את כל 3 המשפטים עם כוכבים ⭐"
+        }
+      },
+      en: {
+        dir: "ltr",
+        appTitle: "Perfect Match",
+        bigTitle: "Please answer the survey..",
+        nameLabel: "Name",
+        namePlaceholder: "Enter your name",
+        languageLabel: "Language",
+        chooseLanguage: "Choose language",
+        gradeLabel: "Grade",
+        chooseGrade: "Choose grade",
+        gradeZ: "7th grade",
+        gradeH: "8th grade",
+        gradeT: "9th grade",
+        gradeY: "10th grade",
+        gradeYA: "11th grade",
+        gradeYB: "12th grade",
+        genderLabel: "Gender",
+        male: "Male",
+        female: "Female",
+        other: "Other",
+        interestsLabel: "Interests",
+        surpriseBtn: "Surprise me",
+        ratingsTitle: "How much do you agree with the following statements? (1–5)",
+        q1Text: "I prefer summer more than winter",
+        q2Text: "I’m a night person, not a morning person",
+        q3Text: "I’m more of a cat person than a dog person",
+        agreeText: "Do you agree not to share any personal information and not harass anyone?",
+        findBtnText: "Find match",
+        chipMusic: "Music",
+        chipGaming: "Gaming",
+        chipCoding: "Coding",
+        chipBooks: "Books",
+        chipRobotics: "Robotics",
+        chipVolleyball: "Volleyball",
+        chipFootball: "Football",
+        chipSwimming: "Swimming",
+        chipSurfing: "Surfing",
+        chipIceSkating: "Ice skating",
+        chipBasketball: "Basketball",
+        chipRunning: "Running",
+        chipArt: "Art",
+        chipCooking: "Cooking",
+        chipBaking: "Baking",
+        chipWriting: "Writing",
+        chipTravel: "Travel",
+        alerts: {
+          enterName: "Please enter your name",
+          pickGender: "Please choose a gender",
+          rateAll: "Please rate all 3 statements ⭐"
+        }
+      },
+      ar: {
+        dir: "rtl",
+        appTitle: "التطابق المثالي",
+        bigTitle: "يرجى تعبئة الاستبيان..",
+        nameLabel: "الاسم",
+        namePlaceholder: "أدخل اسمك",
+        languageLabel: "اللغة",
+        chooseLanguage: "اختر اللغة",
+        gradeLabel: "الصف",
+        chooseGrade: "اختر الصف",
+        gradeZ: "الصف السابع",
+        gradeH: "الصف الثامن",
+        gradeT: "الصف التاسع",
+        gradeY: "الصف العاشر",
+        gradeYA: "الصف الحادي عشر",
+        gradeYB: "الصف الثاني عشر",
+        genderLabel: "الجنس",
+        male: "ذكر",
+        female: "أنثى",
+        other: "آخر",
+        interestsLabel: "الهوايات",
+        surpriseBtn: "فاجئني",
+        ratingsTitle: "إلى أي مدى توافق على العبارات التالية؟ (1–5)",
+        q1Text: "أفضل الصيف أكثر من الشتاء",
+        q2Text: "أنا شخص ليلي ولست شخصًا صباحيًا",
+        q3Text: "أنا محب للقطط أكثر من الكلاب",
+        agreeText: "هل توافق على عدم مشاركة معلومات شخصية وعدم مضايقة أي شخص؟",
+        findBtnText: "ابحث عن تطابق",
+        chipMusic: "موسيقى",
+        chipGaming: "ألعاب",
+        chipCoding: "برمجة",
+        chipBooks: "كتب",
+        chipRobotics: "روبوتات",
+        chipVolleyball: "كرة طائرة",
+        chipFootball: "كرة قدم",
+        chipSwimming: "سباحة",
+        chipSurfing: "ركوب الأمواج",
+        chipIceSkating: "التزلج على الجليد",
+        chipBasketball: "كرة سلة",
+        chipRunning: "جري",
+        chipArt: "فن",
+        chipCooking: "طبخ",
+        chipBaking: "خبز/حلويات",
+        chipWriting: "كتابة",
+        chipTravel: "تنزّه",
+        alerts: {
+          enterName: "يرجى إدخال الاسم",
+          pickGender: "يرجى اختيار الجنس",
+          rateAll: "يرجى تقييم العبارات الثلاث ⭐"
+        }
+      }
     };
 
-    // ✅ SAVE to data.json via server endpoint
-    try {
-      const resp = await fetch("/save", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(result)
+    let currentLang = "he";
+
+    function applyLanguage(lang) {
+      if (!I18N[lang]) return;
+      currentLang = lang;
+
+      document.documentElement.lang = lang;
+      document.documentElement.dir = I18N[lang].dir;
+
+      // update text
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.dataset.i18n;
+        const val = I18N[lang][key];
+        if (typeof val === "string") el.textContent = val;
       });
 
-      if (!resp.ok) throw new Error("Save failed");
-
-      console.log("Saved:", result);
-      alert("נשמר לבדיקה!\n" + JSON.stringify(result, null, 2));
-    } catch (err) {
-      console.error(err);
-      alert("שגיאה בשמירה. ודא שהשרת עובד (server.js) ושאתה על http://localhost:3000");
+      // update placeholders
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+        const key = el.dataset.i18nPlaceholder;
+        const val = I18N[lang][key];
+        if (typeof val === "string") el.setAttribute("placeholder", val);
+      });
     }
-  });
-</script>
+
+    // language selector
+    const langSelect = document.getElementById("langSelect");
+    langSelect.addEventListener("change", () => {
+      const val = langSelect.value || "he";
+      applyLanguage(val);
+    });
+
+    // default
+    applyLanguage("he");
+
+    // ----------------- Hash maker (SHA-256 from name) -----------------
+    async function hashNameToId(name) {
+      const clean = name.trim().toLowerCase();
+      const bytes = new TextEncoder().encode(clean);
+      const hashBuffer = await crypto.subtle.digest("SHA-256", bytes);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const hex = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+      return "nameHash-" + hex.slice(0, 16);
+    }
+
+    // ----------------- Chips -----------------
+    const chipsEl = document.getElementById("chips");
+    chipsEl.addEventListener("click", (e) => {
+      const chip = e.target.closest(".chip");
+      if (!chip) return;
+      chip.classList.toggle("active");
+    });
+
+    document.getElementById("surpriseBtn").addEventListener("click", () => {
+      document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+      const chips = Array.from(document.querySelectorAll(".chip"));
+      const picks = Math.floor(Math.random() * 3) + 2; // 2-4
+      for (let i = 0; i < picks; i++) {
+        chips[Math.floor(Math.random() * chips.length)].classList.add("active");
+      }
+    });
+
+    // ----------------- Gender (buttons) -----------------
+    let selectedGender = null;
+    document.querySelectorAll(".gender-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".gender-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        selectedGender = btn.dataset.gender;
+      });
+    });
+
+    // ----------------- Agreement -----------------
+    const agree = document.getElementById("agree");
+    const findBtn = document.getElementById("findBtn");
+
+    findBtn.disabled = !agree.checked;
+    agree.addEventListener("change", () => {
+      findBtn.disabled = !agree.checked;
+    });
+
+    // ----------------- Star Ratings -----------------
+    const ratings = {};
+    document.querySelectorAll(".stars").forEach(starGroup => {
+      const stars = Array.from(starGroup.querySelectorAll("span"));
+      const key = starGroup.dataset.question;
+
+      stars.forEach((star, index) => {
+        star.addEventListener("click", () => {
+          ratings[key] = index + 1;
+          stars.forEach((s, i) => s.classList.toggle("active", i <= index));
+        });
+      });
+    });
+
+    // ----------------- Find match -----------------
+    findBtn.addEventListener("click", async () => {
+      const name = document.getElementById("name").value.trim();
+      if (!name) return alert(I18N[currentLang].alerts.enterName);
+
+      if (!selectedGender) return alert(I18N[currentLang].alerts.pickGender);
+
+      const selectedInterests = Array
+        .from(document.querySelectorAll(".chip.active"))
+        .map(c => c.dataset.value);
+
+      const required = ["q1", "q2", "q3"];
+      const missing = required.filter(k => !ratings[k]);
+      if (missing.length) return alert(I18N[currentLang].alerts.rateAll);
+
+      const id = await hashNameToId(name);
+
+      const result = {
+        id,
+        name,
+        gender: selectedGender,
+        interests: selectedInterests,
+        ratings
+      };
+
+      // (optional) if you still run local server:
+      // try { await fetch("/save", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify(result) }); } catch(e) {}
+
+      console.log("Form result:", result);
+      alert(JSON.stringify(result, null, 2));
+    });
+  </script>
 </body>
 </html>
