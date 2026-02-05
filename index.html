@@ -11,12 +11,15 @@
       --top:#4b4b4b;
       --card:#0b0c10;
       --text:#ffffff;
-      --muted:#a9b0bd;
-      --chipBorder:#3a3f55;
-      --chipActive:#2e5cff;
-      --btn1:#7a6cff;
-      --btn2:#2fc3ff;
+      --muted:#f0b6c8;
+
+      --chipBorder:#6b3a55;
+      --chipActive:#ff5fa2;
+
+      --btn1:#ff5fa2;
+      --btn2:#ff9fcf;
     }
+
 
     *{box-sizing:border-box}
     body{
@@ -132,12 +135,13 @@
       border-radius: 56px;
       padding: 26px 26px 30px;
       background:
-        radial-gradient(120% 120% at 70% 0%, rgba(122,108,255,.25) 0%, transparent 55%),
-        radial-gradient(120% 120% at 20% 30%, rgba(47,195,255,.18) 0%, transparent 55%),
-        linear-gradient(180deg, #0b0c10 0%, #0a0b10 35%, #06070b 100%);
+        radial-gradient(120% 120% at 70% 0%, rgba(255,95,162,.35) 0%, transparent 55%),
+        radial-gradient(120% 120% at 20% 30%, rgba(255,159,207,.25) 0%, transparent 55%),
+        linear-gradient(180deg, #2a0f1d 0%, #1b0b14 40%, #12070c 100%);
       box-shadow: 0 18px 40px rgba(0,0,0,.35);
-      border: 1px solid rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
     }
+
 
     .section{
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
@@ -357,7 +361,7 @@
     }
 
     .stars span.active{
-    color: gold;
+    color: #ff5fa2;
     }
     input[type="text"]{
     width:100%;
@@ -397,8 +401,6 @@
       border-color: transparent;
       color:white;
     }
-
-
 
   </style>
 </head>
@@ -474,21 +476,21 @@
         <div class="ratings">
 
         <div class="rating-question">
-            <p>אני אוהב/ת להכיר אנשים חדשים</p>
+            <p>הייתי מעדיפ/ה להישאר בבית ולצפות בסדרה/סרט עם חבר/ה  מאשר לצאת ליציאה עם הרבה חברים</p>
             <div class="stars" data-question="q1">
             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
             </div>
         </div>
 
         <div class="rating-question">
-            <p>חשוב לי שיחה עמוקה ומשמעותית</p>
+            <p>אני אדם של לילה ולא אדם של בוקר</p>
             <div class="stars" data-question="q2">
             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
             </div>
         </div>
 
         <div class="rating-question">
-            <p>אני מחפש/ת חיבור קליל וכיפי</p>
+            <p>אני יותר אדם של חתולים מאשר של כלבים</p>
             <div class="stars" data-question="q3">
             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
             </div>
