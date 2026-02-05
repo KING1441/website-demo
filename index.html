@@ -74,23 +74,24 @@
     z-index: 1;
     }
 
-
     header .logo{
-      width:120px;
-      height:50px;
-      background:#fff;
-      border-radius:2px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
+    width:90px;      /* הגודל */
+    height:90px;
+    border-radius:50%; /* עיגול */
+    overflow:hidden;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     }
+
     header .logo img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      display:block;
+    width:100%;
+    height:100%;
+    object-fit:contain; /* לא נחתך */
     }
+
+    
     header h1{
       position:absolute;
       left:50%;
@@ -329,6 +330,76 @@
       .big-title{ font-size: 34px; }
       .card{ border-radius: 40px; padding: 18px; }
     }
+    .ratings{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    }
+
+    .rating-question p{
+    margin: 0 0 6px;
+    font-size: 14px;
+    color: #e9ecf2;
+    }
+
+    .stars{
+    display: flex;
+    gap: 6px;
+    font-size: 26px;
+    cursor: pointer;
+    direction: ltr;
+    }
+
+    .stars span{
+    color: #555;
+    transition: .15s ease;
+    }
+
+    .stars span.active{
+    color: gold;
+    }
+    input[type="text"]{
+    width:100%;
+    padding: 12px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,.10);
+    outline:none;
+    background: rgba(8,10,14,.55);
+    color: #e9ecf2;
+    font-size: 14px;
+    margin-top:10px;
+    }
+
+    input[type="text"]::placeholder{
+      color: rgba(233,236,242,.55);
+    }
+    .gender{
+      display:flex;
+      gap:10px;
+      margin-top:10px;
+    }
+
+    .gender-btn{
+      flex:1;
+      padding:10px 0;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.15);
+      background: rgba(36,39,53,.55);
+      color:#e9ecf2;
+      font-size:14px;
+      cursor:pointer;
+      transition:.15s ease;
+    }
+
+    .gender-btn.active{
+      background: linear-gradient(90deg, var(--btn1), var(--btn2));
+      border-color: transparent;
+      color:white;
+    }
+
+
+
   </style>
 </head>
 
@@ -336,7 +407,7 @@
   <header>
     <div class="logo">
       <!-- Put your logo.png in the same folder as this HTML -->
-      <img src="logo.png" alt="logo">
+      <img src="./assets/logo.png" alt="logo">
     </div>
     <h1>מגוונים</h1>
   </header>
@@ -347,6 +418,9 @@
 
       <div class="card">
         <div class="section">
+          <label>שם</label>
+          <input type="text" id="name" placeholder="הכנס/י את השם שלך" />
+
           <label>שפה</label>
 
           <select>
@@ -364,8 +438,12 @@
             <option>שכבה יא</option>
             <option>שכבה יב</option>
           </select>
-
-
+          <label>מין</label>
+          <div class="gender">
+            <button type="button" class="gender-btn" data-gender="male">זכר</button>
+            <button type="button" class="gender-btn" data-gender="female">נקבה</button>
+            <button type="button" class="gender-btn" data-gender="other">אחר</button>
+          </div>
           <div class="subLabel">תחביבים</div> 
 
           <div class="chips" id="chips">
@@ -393,6 +471,31 @@
             <button class="surprise" id="surpriseBtn" type="button">Surprise me</button>
           </div>
         </div>
+        <div class="ratings">
+
+        <div class="rating-question">
+            <p>אני אוהב/ת להכיר אנשים חדשים</p>
+            <div class="stars" data-question="q1">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+        </div>
+
+        <div class="rating-question">
+            <p>חשוב לי שיחה עמוקה ומשמעותית</p>
+            <div class="stars" data-question="q2">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+        </div>
+
+        <div class="rating-question">
+            <p>אני מחפש/ת חיבור קליל וכיפי</p>
+            <div class="stars" data-question="q3">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+        </div>
+
+        </div>
+
 
         <!-- Agreement checkbox (NO STAR) -->
         <div class="agree-bar">
@@ -416,37 +519,109 @@
   </main>
 
   <script>
-    // Toggle chips
-    document.getElementById("chips").addEventListener("click", (e) => {
-      const chip = e.target.closest(".chip");
-      if (!chip) return;
-      chip.classList.toggle("active");
-    });
+  // ----------------- Hash maker (SHA-256 from name) -----------------
+  async function hashNameToId(name) {
+    const clean = name.trim().toLowerCase();
+    const bytes = new TextEncoder().encode(clean);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", bytes);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hex = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+    return "nameHash-" + hex.slice(0, 16); // short id
+  }
 
-    // Surprise me (random chips)
-    document.getElementById("surpriseBtn").addEventListener("click", () => {
-      document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
-      const chips = Array.from(document.querySelectorAll(".chip"));
-      const picks = Math.floor(Math.random() * 3) + 2; // 2-4
-      for (let i = 0; i < picks; i++) {
-        chips[Math.floor(Math.random() * chips.length)].classList.add("active");
-      }
-    });
+  // ----------------- Chips -----------------
+  const chipsEl = document.getElementById("chips");
+  chipsEl.addEventListener("click", (e) => {
+    const chip = e.target.closest(".chip");
+    if (!chip) return;
+    chip.classList.toggle("active");
+  });
 
-    // Disable Find match until agreed
-    const agree = document.getElementById("agree");
-    const btn = document.getElementById("findBtn");
-    btn.disabled = true;
+  document.getElementById("surpriseBtn").addEventListener("click", () => {
+    document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+    const chips = Array.from(document.querySelectorAll(".chip"));
+    const picks = Math.floor(Math.random() * 3) + 2; // 2-4
+    for (let i = 0; i < picks; i++) {
+      chips[Math.floor(Math.random() * chips.length)].classList.add("active");
+    }
+  });
 
-    agree.addEventListener("change", () => {
-      btn.disabled = !agree.checked;
-    });
-
-    // Find match click
+  // ----------------- Gender (buttons) -----------------
+  let selectedGender = null;
+  document.querySelectorAll(".gender-btn").forEach(btn => {
     btn.addEventListener("click", () => {
-      const selected = Array.from(document.querySelectorAll(".chip.active")).map(c => c.dataset.value);
-      alert("Selected interests: " + (selected.length ? selected.join(", ") : "None"));
+      document.querySelectorAll(".gender-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      selectedGender = btn.dataset.gender; // "male" | "female" | "other"
     });
-  </script>
+  });
+
+  // ----------------- Agreement -----------------
+  const agree = document.getElementById("agree");
+  const findBtn = document.getElementById("findBtn");
+
+  findBtn.disabled = !agree.checked;
+  agree.addEventListener("change", () => {
+    findBtn.disabled = !agree.checked;
+  });
+
+  // ----------------- Star Ratings -----------------
+  const ratings = {}; // { q1: 3, q2: 5, q3: 1 }
+
+  document.querySelectorAll(".stars").forEach(starGroup => {
+    const stars = Array.from(starGroup.querySelectorAll("span"));
+    const key = starGroup.dataset.question;
+
+    stars.forEach((star, index) => {
+      star.addEventListener("click", () => {
+        ratings[key] = index + 1;
+        stars.forEach((s, i) => s.classList.toggle("active", i <= index));
+      });
+    });
+  });
+
+  // ----------------- Find match (ONE handler) -----------------
+  findBtn.addEventListener("click", async () => {
+    const name = document.getElementById("name").value.trim();
+    if (!name) return alert("אנא הכנס/י שם");
+
+    if (!selectedGender) return alert("אנא בחר/י מין");
+
+    const selectedInterests = Array
+      .from(document.querySelectorAll(".chip.active"))
+      .map(c => c.dataset.value);
+
+    const required = ["q1", "q2", "q3"];
+    const missing = required.filter(k => !ratings[k]);
+    if (missing.length) return alert("אנא דרג/י את כל 3 המשפטים עם כוכבים ⭐");
+
+    const id = await hashNameToId(name);
+
+    const result = {
+      id,
+      name,
+      gender: selectedGender,
+      interests: selectedInterests,
+      ratings
+    };
+
+    // ✅ SAVE to data.json via server endpoint
+    try {
+      const resp = await fetch("/save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(result)
+      });
+
+      if (!resp.ok) throw new Error("Save failed");
+
+      console.log("Saved:", result);
+      alert("נשמר לבדיקה!\n" + JSON.stringify(result, null, 2));
+    } catch (err) {
+      console.error(err);
+      alert("שגיאה בשמירה. ודא שהשרת עובד (server.js) ושאתה על http://localhost:3000");
+    }
+  });
+</script>
 </body>
 </html>

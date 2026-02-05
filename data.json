@@ -1,0 +1,36 @@
+[
+  {
+    "id": "nameHash-2cf24dba5fb0a30e",
+    "name": "hello",
+    "gender": "male",
+    "interests": [
+      "Music",
+      "Gaming",
+      "Coding",
+      "Surfing",
+      "IceSkating",
+      "Art",
+      "Cooking",
+      "Writing"
+    ],
+    "ratings": {
+      "q1": 4,
+      "q2": 3,
+      "q3": 2
+    }
+  },
+  {
+    "id": "nameHash-38b59b5e438d3ffb",
+    "name": "User 2",
+    "gender": "male",
+    "interests": [
+      "Basketball",
+      "Travel"
+    ],
+    "ratings": {
+      "q1": 5,
+      "q2": 1,
+      "q3": 4
+    }
+  }
+]
